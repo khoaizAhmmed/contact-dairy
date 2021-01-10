@@ -8,7 +8,7 @@ exports.contactApi = (req, res) => {
 
 
     function fetchData(callback){
-    fetch("https://jsonplaceholder.typicode.com/users") //Could change this to a find request to the data base directly like Teacher.find()...
+    fetch("https://khoaiz-project-contact.herokuapp.com/contact/api") //Could change this to a find request to the data base directly like Teacher.find()...
         .then(res => res.json())
         .then(res => {
             console.log(res);
