@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact Dairy</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div>
+
+				<form action="/contact" method="POST" class="login100-form validate-form" id="my-form" >
+					<span class="login100-form-title">
+						Contact Submit
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Name is required: Mr.X">
+						<input class="input100" type="text" name="name" placeholder="Name">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Phone number is required">
+						<input class="input100" type="text" name="phone" placeholder="Phone Number">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate = "Email is required : test@mail.com">
+						<input class="input100" type="email" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div>
+            <input type="hidden" name="id">
+          </div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" id="Sbtn">
+              Submit
+						</button>
+					</div>
+        </form>
+        
+        <div class="table-responsive">
+          <table class="table mt-5">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% obj.reverse().map(c=>{ %>
+              <tr>
+                <th scope="row"><%= c._id %> </th>
+                  <td><%= c.name %></td>
+                  <td><%= c.phone %></td>
+                  <td><%= c.email %></td>
+                  <td>
+                    <button class="btn btn-warning btn-sm m-1 edit-btn"
+                    data-name="<%= c.name %> "
+                    data-phone="<%= c.phone %> "
+                    data-email="<%= c.email%> "
+                    data-id="<%= c._id %> ">
+                      Edit</button>
+                    <a class="btn btn-danger btn-sm m-1 " href="/contact/delete/<%= c._id %>"  >Delete</a>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+        </div>
+			</div>
+		</div>
+	</div>
+	
+ 
+
+	
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+  <script>
+    window.onload = function(){
+      let editBtn = document.getElementsByClassName('edit-btn');
+      let form = document.getElementById('my-form');
+      let Sbtn = document.getElementById('Sbtn');
+      function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+    
+      [...editBtn].forEach(btns => {
+        btns.addEventListener('click',function(e){
+          
+          let {name,phone,email,id} = e.target.dataset
+          form['name'].value = name
+          form['phone'].value = phone
+          form['email'].value = email
+          form['id'].value = id
+          Sbtn.innerText = 'Update'
+          topFunction()
+          // form[5].value = 'Update'
+        })
+      });
+    }
+  </script>
+</body>
+</html>
