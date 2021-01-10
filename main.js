@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose');  
        
-const PORT = process.env.PORT || 5500
+const PORT = process.env.PORT
 const contactRouter = require('./Routers/contactRouters')
 const indexRouter = require('./Routers/indexRouters')
 
