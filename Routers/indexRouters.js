@@ -1,7 +1,9 @@
 const router = require('express').Router()
-const{contactApi,errorPage}= require('../RouterController/indexController')
+const{errorPage}= require('../RouterController/indexController')
+const{getAllContacts}= require('../RouterController/contactController')
 
-router.get('/', contactApi)
+
+router.get('/', getAllContacts)
 router.get('*',errorPage)
 
 module.exports = router
