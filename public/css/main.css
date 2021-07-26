@@ -20,7 +20,10 @@
   src: url('../fonts/poppins/Poppins-Medium.ttf'); 
 }
 
-
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
