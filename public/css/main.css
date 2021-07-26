@@ -263,6 +263,10 @@ iframe {
   -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
   animation: anim-shadow 0.5s ease-in-out forwards;
 }
+.credit{
+    text-decoration: none !important;
+    color:blue;
+}
 
 @-webkit-keyframes anim-shadow {
   to {
