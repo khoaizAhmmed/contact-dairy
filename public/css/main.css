@@ -266,6 +266,7 @@ iframe {
 .credit{
     text-decoration: none !important;
     color:blue;
+    text-align: center;
 }
 
 @-webkit-keyframes anim-shadow {
